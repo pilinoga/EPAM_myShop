@@ -1,0 +1,1 @@
+ CHARACTER SET = utf8;
