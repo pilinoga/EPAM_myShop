@@ -18,6 +18,7 @@ public class AddCustomerCommand implements Command{
     private static final String PHONE_NUMBER_PARAMETER = "phone_number";
     private static final String CARD_BALANCE_PARAMETER = "card_balance";
     private static final String ID_ATTRIBUTE = "id";
+    private static final String ERROR = "error";
     private final CustomerService service = new CustomerServiceImpl();
     private static final ResponseContext CONTEXT = new ResponseContext() {
         @Override
@@ -60,7 +61,7 @@ public class AddCustomerCommand implements Command{
             session.setAttribute(CUSTOMER_ATTRIBUTE,customer);
             return CONTEXT;
         }else{
-            context.addAttribute("error", "невалидные данные");//todo
+            context.addAttribute(ERROR, Message.INVALID_DATA);
             return ERROR_CONTEXT;
         }
     }

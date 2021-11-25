@@ -13,6 +13,8 @@ public class AddNewProductCommand implements Command{
     private static final String DESCRIPTION_PARAMETER = "description";
     private static final String SPECIFICATION_PARAMETER = "specification";
     private static final String PRICE_PARAMETER = "price";
+    private static final String ADD_PRODUCT = "add_product";
+    private static final String PRODUCT_ERROR = "error_product";
     private final ProductService service = new ProductServiceImpl();
     private static final ResponseContext CONTEXT = new ResponseContext() {
         @Override
@@ -37,9 +39,9 @@ public class AddNewProductCommand implements Command{
         if(service.isValid(context)){
             ProductDto product = parseContext(context);
             service.create(product);
-              context.addAttribute("add_product", "товар добавлен в БД");
+              context.addAttribute(ADD_PRODUCT, Message.ADD_TO_DB);
         }else{
-            context.addAttribute("error_product", "невалидные данные"); //todo error mapper
+            context.addAttribute(PRODUCT_ERROR, Message.INVALID_DATA);
         }
         return CONTEXT;
     }

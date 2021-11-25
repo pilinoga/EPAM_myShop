@@ -15,6 +15,9 @@ public class RegistrationCommand implements Command{
     private static final String PASSWORD_PARAMETER = "password";
     private static final String ID_ATTRIBUTE = "id";
     private static final String ROLE_ATTRIBUTE = "role";
+    private static final String LOGIN_ATTRIBUTE = "login";
+    private static final String ERROR_ATTRIBUTE = "error_login";
+    private static final String ERROR_UNIQUE_ATTRIBUTE = "error_login_unique";
     private final UserService service = new UserServiceImpl();
     private static final ResponseContext CONTEXT = new ResponseContext() {
         @Override
@@ -55,13 +58,13 @@ public class RegistrationCommand implements Command{
             context.getSession().setAttribute(ROLE_ATTRIBUTE, Role.CUSTOMER);
             Long id = service.create(user).getId();
             context.getSession().setAttribute(ID_ATTRIBUTE,id);
-            context.addAttribute("login", "аккаунт успешно создан");
+            context.addAttribute(LOGIN_ATTRIBUTE, Message.PROFILE_ADD);
             return CONTEXT;
         }else{
             if(!validation) {
-                context.addAttribute("error_login","невалидные данные");// todo
+                context.addAttribute(ERROR_ATTRIBUTE,Message.INVALID_DATA);
                    }else{
-                context.addAttribute("error_login_unique", "логин занят, придумайте другой");
+                context.addAttribute(ERROR_UNIQUE_ATTRIBUTE, Message.ERROR_UNIQUE);
             }
             return ERROR_CONTEXT;
         }

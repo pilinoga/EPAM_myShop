@@ -42,7 +42,7 @@ public enum CommandType {
     REFUSE_ORDER(RefuseOrderCommand.getInstance(),Role.CUSTOMER),
     ORDER_HISTORY(GoToOrderHistoryCommand.getInstance(),Role.CUSTOMER,Role.ADMIN),
     ABOUT_ORDER(AboutOrderCommand.getInstance(),Role.CUSTOMER,Role.ADMIN),
-    ABOUT_PRODUCT(AboutProductCommand.getInstance(),Role.CUSTOMER, Role.ADMIN, Role.UNKNOWN ),                                                        //todo about_product for all,
+    ABOUT_PRODUCT(AboutProductCommand.getInstance(),Role.CUSTOMER, Role.ADMIN, Role.UNKNOWN ),
     ADD_NEW_PRODUCT(AddNewProductCommand.getInstance(),Role.ADMIN),
     EDIT_PROFILE(EditProfileCommand.getInstance(),Role.CUSTOMER),
     //todo delete_profile for customer

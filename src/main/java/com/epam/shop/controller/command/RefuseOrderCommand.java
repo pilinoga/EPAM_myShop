@@ -11,6 +11,7 @@ public class RefuseOrderCommand implements Command {
     private static final Command INSTANCE = new RefuseOrderCommand();
     private static final String JSP = "WEB-INF/jsp/basket.jsp";
     private static final String ID_ORDER_ATTRIBUTE = "id_order";
+    private static final String ERROR_ATTRIBUTE = "message_refuse";
     private final OrderService orderService = new OrderServiceImpl();
     private static final ResponseContext CONTEXT = new ResponseContext() {
         @Override
@@ -38,7 +39,7 @@ public class RefuseOrderCommand implements Command {
         OrderDto order = orderService.getById(orderId);
         orderService.delete(order);
         session.removeAttribute(ID_ORDER_ATTRIBUTE);
-        context.addAttribute("message_refuse","заказ отменен!"); //todo
+        context.addAttribute(ERROR_ATTRIBUTE,Message.ORDER_REFUSE);
         return CONTEXT;
     }
 }

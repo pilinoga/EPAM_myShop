@@ -22,7 +22,6 @@ public class LoginCommand implements Command {
     private static final String CUSTOMER_ATTRIBUTE = "customer";
     private static final String ROLE_PARAMETER = "role";
     private static final String ERROR = "error_login";
-    private static final String ERROR_MASSAGE = "неверный логин или пароль"; //todo maybe in errorMapper
     private final UserService userService = new UserServiceImpl();
     private final CustomerService customerService = new CustomerServiceImpl();
     private static final ResponseContext LOGIN_CONTEXT = new ResponseContext() {
@@ -94,7 +93,7 @@ public class LoginCommand implements Command {
             }
             return PROFILE_CONTEXT;
         } else {
-            context.addAttribute(ERROR,ERROR_MASSAGE);
+            context.addAttribute(ERROR, Message.ERROR_LOGIN);
             return LOGIN_CONTEXT;
         }
     }

@@ -17,6 +17,8 @@ public class EditProfileCommand implements Command{
     private static final String CARD_BALANCE_PARAMETER = "card_balance";
     private static final String CUSTOMER_ATTRIBUTE = "customer";
     private static final String ID_ATTRIBUTE = "id";
+    private static final String EDIT_ATTRIBUTE = "edit_profile";
+    private static final String ERROR_ATTRIBUTE = "error_edit";
     private final CustomerService service = new CustomerServiceImpl();
     private static final ResponseContext CONTEXT = new ResponseContext() {
         @Override
@@ -49,9 +51,9 @@ public class EditProfileCommand implements Command{
                 service.create(customerNew);
             }
             session.setAttribute(CUSTOMER_ATTRIBUTE,customerNew);
-            context.addAttribute("edit_profile", "профиль обновлен"); //todo error mapper
+            context.addAttribute(EDIT_ATTRIBUTE, Message.UPDATED_PROFILE);
         }else{
-            context.addAttribute("error_edit", "невалидные данные");
+            context.addAttribute(ERROR_ATTRIBUTE, Message.INVALID_DATA);
         }
         return CONTEXT;
     }

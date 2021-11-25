@@ -14,6 +14,8 @@ public class EditProductCommand implements Command{
     private static final String DESCRIPTION_PARAMETER = "description";
     private static final String PRICE_PARAMETER = "price";
     private static final String SPECIFICATION_PARAMETER = "specification";
+    private static final String ERROR_ATTRIBUTE = "error_edit";
+    private static final String EDIT_ATTRIBUTE = "edit_product";
     private final ProductService service = new ProductServiceImpl();
     private static final ResponseContext CONTEXT = new ResponseContext() {
         @Override
@@ -40,9 +42,9 @@ public class EditProductCommand implements Command{
             ProductDto product = parseContext(context);
             product.setId(id);
             service.update(product);
-            context.addAttribute("edit_product", "товар обновлен"); //todo error mapper
+            context.addAttribute(EDIT_ATTRIBUTE, Message.UPDATED_PRODUCT);
         }else{
-            context.addAttribute("error_edit", "невалидные данные");
+            context.addAttribute(ERROR_ATTRIBUTE, Message.INVALID_DATA);
         }
         return CONTEXT;
     }
