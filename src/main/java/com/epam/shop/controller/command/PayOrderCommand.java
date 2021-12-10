@@ -19,8 +19,9 @@ public class PayOrderCommand implements Command{
     private static final String ORDER_PRICE_ATTRIBUTE = "order_price";
     private static final String PRODUCTS_ATTRIBUTE = "products";
     private static final String ID_CUSTOMER = "id";
-    private static final String ERROR_ATTRIBUTE = "message_error";
-    private static final String PAY_ATTRIBUTE = "message_pay";
+    private static final String ERROR_ATTRIBUTE = "error";
+    private static final String BLOCK_ATTRIBUTE = "block";
+    private static final String PAY_ATTRIBUTE = "pay";
     private final OrderService orderService = new OrderServiceImpl();
     private final CustomerService customerService = new CustomerServiceImpl();
     private static final ResponseContext CONTEXT = new ResponseContext() {
@@ -53,7 +54,7 @@ public class PayOrderCommand implements Command{
         if (!customer.getBlock()) {
             if (customer.getCardBalance() < orderPrice){
                 orderService.delete(order);
-                context.addAttribute(ERROR_ATTRIBUTE,Message.ERROR_BALANCE);
+                context.addAttribute(ERROR_ATTRIBUTE,true);
             }else {
                 double newBalance = customer.getCardBalance() - orderPrice;
                 customer.setCardBalance(newBalance);
@@ -61,11 +62,11 @@ public class PayOrderCommand implements Command{
                 order.setStatus(true);
                 customerService.update(customer);
                 orderService.update(order);
-                context.addAttribute(PAY_ATTRIBUTE, Message.ORDER_PAY);
+                context.addAttribute(PAY_ATTRIBUTE,true);
             }
         }else{
             orderService.delete(order);
-            context.addAttribute(ERROR_ATTRIBUTE,Message.BLOCK);
+            context.addAttribute(BLOCK_ATTRIBUTE,true);
         }
         session.removeAttribute(ID_ORDER_ATTRIBUTE);
         context.addAttribute(PRODUCTS_ATTRIBUTE,products);

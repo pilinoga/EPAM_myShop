@@ -93,7 +93,7 @@ public class LoginCommand implements Command {
             }
             return PROFILE_CONTEXT;
         } else {
-            context.addAttribute(ERROR, Message.ERROR_LOGIN);
+            context.addAttribute(ERROR, true);
             return LOGIN_CONTEXT;
         }
     }

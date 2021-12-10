@@ -25,13 +25,10 @@
       <p class="lead fw-normal"><fmt:message bundle="${loc}" key="language.mainPrint"/></p>
     </div>
 <div class="position-relative text-center bg-light">
-    <p><img src="https://www.apple.com/v/iphone-13-pro/d/images/overview/appleone-continuity/continuity__dgqzd54dz6ky_large.jpg"</p>
+    <p><img src="images/main.jpg"</p>
     <div class="col-md-5 p-lg-1 mx-auto my-1">
       <a class="btn btn-outline-secondary" href="${pageContext.request.contextPath}/shop?command=show_products&page=1"><fmt:message bundle="${loc}" key="language.toCatalog" /></a>
-
  </div>
-
-
 <jsp:include page="blocks/footer.jsp"></jsp:include>
 </body>
 

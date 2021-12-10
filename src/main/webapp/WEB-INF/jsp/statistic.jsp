@@ -14,9 +14,10 @@
           p {
             margin-left: 550px;
                         }
+
          </style>
 </head>
-<body>
+
   <fmt:setLocale value="${sessionScope.language}"/>
   <fmt:setBundle basename="language" var="loc"/>
 <div align="left" class= "bg-light">
@@ -75,6 +76,7 @@
                      </div>
 
     </div>
+
 
 </body>
 

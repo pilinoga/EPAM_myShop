@@ -23,13 +23,14 @@
                  </style>
 </head>
 <body>
-<fmt:setLocale value="en"/>
+<fmt:setLocale value="${sessionScope.language}"/>
 <fmt:setBundle basename="language" var="loc"/>
 
 <div class= "bg-light">
 
- <c:if test="${error_login != null}">
-                <h6><p><font color = "red"> <c:out value="${error_login}" /></ font><p></h6></c:if>
+ <c:if test="${error_login}">
+                <h6><p><font color = "red"> <fmt:message bundle="${loc}" key="language.errorLogin"/></ font><p></h6>
+ </c:if>
 
 <font color = "#3594B4"> </ font>
         <form name="loginForm" method="POST" action="shop">

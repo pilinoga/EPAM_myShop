@@ -42,9 +42,9 @@ public class EditProductCommand implements Command{
             ProductDto product = parseContext(context);
             product.setId(id);
             service.update(product);
-            context.addAttribute(EDIT_ATTRIBUTE, Message.UPDATED_PRODUCT);
+            context.addAttribute(EDIT_ATTRIBUTE, true);
         }else{
-            context.addAttribute(ERROR_ATTRIBUTE, Message.INVALID_DATA);
+            context.addAttribute(ERROR_ATTRIBUTE, true);
         }
         return CONTEXT;
     }

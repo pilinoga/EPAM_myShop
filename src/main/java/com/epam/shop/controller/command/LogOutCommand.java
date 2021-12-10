@@ -16,6 +16,8 @@ public class LogOutCommand implements Command{
     private static final String CUSTOMER_ATTRIBUTE = "customer";
     private static final String ROLE_ATTRIBUTE = "role";
     private static final String ID_ORDER_ATTRIBUTE = "id_order";
+    private static final String LANG_ATTRIBUTE = "language";
+    private static final String DEFAULT_LANG = "en";
     private final OrderService orderService = new OrderServiceImpl();
     private static final ResponseContext CONTEXT = new ResponseContext() {
         @Override
@@ -45,8 +47,10 @@ public class LogOutCommand implements Command{
         }
         session.removeAttribute(ID_ATTRIBUTE);
         session.removeAttribute(CUSTOMER_ATTRIBUTE);
+        session.removeAttribute(LANG_ATTRIBUTE);
         session.invalidate();
         context.getSession().setAttribute(ROLE_ATTRIBUTE, Role.UNKNOWN);
+        context.getSession().setAttribute(LANG_ATTRIBUTE, DEFAULT_LANG);
         return CONTEXT;
     }
 }

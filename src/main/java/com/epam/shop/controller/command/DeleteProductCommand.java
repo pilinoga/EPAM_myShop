@@ -10,7 +10,7 @@ public class DeleteProductCommand implements Command{
     private static final Command INSTANCE = new DeleteProductCommand();
     private static final String JSP = "WEB-INF/jsp/edit_product.jsp";
     private static final String ID_PARAMETER = "id";
-    private static final String ATTRIBUTE = "action";
+    private static final String ATTRIBUTE = "remove_product";
     private final ProductService service = new ProductServiceImpl();
     private static final ResponseContext CONTEXT = new ResponseContext() {
         @Override
@@ -35,7 +35,7 @@ public class DeleteProductCommand implements Command{
        long id = Long.parseLong(context.getParameter(ID_PARAMETER));
         ProductDto product = service.getById(id);
         service.delete(product);
-        context.addAttribute(ATTRIBUTE,Message.REMOVE_FROM_DB);
+        context.addAttribute(ATTRIBUTE,true);
         return CONTEXT;
     }
 }

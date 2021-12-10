@@ -31,11 +31,13 @@
 
 <div class="container" >
 
-                <c:if test="${error_product != null}">
-               <h5><p><font color = "red"> <c:out value="${error_product}" /></ font></p></h5></c:if>
+                <c:if test="${error_product}">
+               <h5><p><font color = "red"> <fmt:message bundle="${loc}" key="language.invalidData"/></ font></p></h5>
+               </c:if>
 
-             <c:if test="${add_product != null}">
-             <h5><p><font color = "red"> <c:out value="${add_product}" /> </ font></p></h5></c:if>
+             <c:if test="${add_product }">
+             <h5><p><font color = "red"> <fmt:message bundle="${loc}" key="language.addToDB"/> </ font></p></h5>
+             </c:if>
 
 <h3> <p><font color = "#3594B4"><fmt:message bundle="${loc}" key="language.addProduct"/></ font> </p></h3>
 <form name="editProfile" method="POST" action="shop">

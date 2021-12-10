@@ -15,9 +15,8 @@ public class RegistrationCommand implements Command{
     private static final String PASSWORD_PARAMETER = "password";
     private static final String ID_ATTRIBUTE = "id";
     private static final String ROLE_ATTRIBUTE = "role";
-    private static final String LOGIN_ATTRIBUTE = "login";
     private static final String ERROR_ATTRIBUTE = "error_login";
-    private static final String ERROR_UNIQUE_ATTRIBUTE = "error_login_unique";
+    private static final String ERROR_UNIQUE_ATTRIBUTE = "error_unique";
     private final UserService service = new UserServiceImpl();
     private static final ResponseContext CONTEXT = new ResponseContext() {
         @Override
@@ -58,13 +57,12 @@ public class RegistrationCommand implements Command{
             context.getSession().setAttribute(ROLE_ATTRIBUTE, Role.CUSTOMER);
             Long id = service.create(user).getId();
             context.getSession().setAttribute(ID_ATTRIBUTE,id);
-            context.addAttribute(LOGIN_ATTRIBUTE, Message.PROFILE_ADD);
             return CONTEXT;
         }else{
             if(!validation) {
-                context.addAttribute(ERROR_ATTRIBUTE,Message.INVALID_DATA);
+                context.addAttribute(ERROR_ATTRIBUTE,true);
                    }else{
-                context.addAttribute(ERROR_UNIQUE_ATTRIBUTE, Message.ERROR_UNIQUE);
+                context.addAttribute(ERROR_UNIQUE_ATTRIBUTE, true);
             }
             return ERROR_CONTEXT;
         }

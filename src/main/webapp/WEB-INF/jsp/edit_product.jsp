@@ -25,15 +25,18 @@
 <div class="container" >
 
 
-                <c:if test="${error_edit != null}">
-                <h5><p><font color = "red"> <c:out value="${error_edit}" /></ font><p></h5></c:if>
+                <c:if test="${error_edit}">
+                <h5><p><font color = "red"> <fmt:message bundle="${loc}" key="language.invalidData"/></ font><p></h5>
+                </c:if>
 
 
-             <c:if test="${edit_product != null}">
-             <h5><p><font color = "red"> <c:out value="${edit_product}" /></ font><p></h5></c:if>
+             <c:if test="${edit_product}">
+             <h5><p><font color = "red"> <fmt:message bundle="${loc}" key="language.updatedProduct"/></ font><p></h5>
+             </c:if>
 
-             <c:if test="${action != null}">
-                          <h5><p><font color = "red"> <c:out value="${action}" /></ font><p></h5></c:if>
+             <c:if test="${remove_product}">
+                          <h5><p><font color = "red"> <fmt:message bundle="${loc}" key="language.removeMessage"/></ font><p></h5>
+             </c:if>
 
 <h3> <p><font color = "#3594B4"><fmt:message bundle="${loc}" key="language.editProduct"/></ font> </p></h3>
 <form name="editProfile" method="POST" action="shop">
@@ -77,7 +80,7 @@
 
 
 	</div>
-	<c:if test="${(action == null) && (edit_product == null)}">
+	<c:if test="${(remove_product == null) && (edit_product == null)}">
 </div>
 		<div class="col-md-2 p-lg-1 mx-auto my-3">
         <input class="btn btn-primary" type="submit" value="<fmt:message bundle="${loc}" key="language.update"/>">
@@ -86,7 +89,7 @@
 </c:if>
 </div>
  </form>
- <c:if test="${(action == null) && (edit_product == null) && (error_edit ==null) }">
+ <c:if test="${(remove_product == null) && (edit_product == null) && (error_edit ==null) }">
  <form name="editProfile" method="POST" action="shop">
  <input type="hidden" name="command" value="delete_product"/>
  <input type="hidden" name="id" value="${product.id}"/>

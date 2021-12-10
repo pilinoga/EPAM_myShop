@@ -61,7 +61,7 @@ public class AddCustomerCommand implements Command{
             session.setAttribute(CUSTOMER_ATTRIBUTE,customer);
             return CONTEXT;
         }else{
-            context.addAttribute(ERROR, Message.INVALID_DATA);
+            context.addAttribute(ERROR, true);
             return ERROR_CONTEXT;
         }
     }

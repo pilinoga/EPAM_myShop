@@ -24,6 +24,7 @@ public class AddProductToOrderCommand implements Command{
     private static final String ID_PRODUCT = "id";
     private static final String ID_ORDER = "id_order";
     private static final String PRODUCTS_ATTRIBUTE = "products";
+    private static final String ADD_ATTRIBUTE = "action";
     private static final String PAGE_PARAMETER= "page";
     private final OrderService serviceOrder = new OrderServiceImpl();
     private final OrderItemService serviceItem = new OrderItemServiceImpl();
@@ -72,7 +73,7 @@ public class AddProductToOrderCommand implements Command{
         List<ProductDto> products = serviceProduct.getRowsForPage(page);
         context.addAttribute(PRODUCTS_ATTRIBUTE, products);
         context.addAttribute(PAGE_PARAMETER,page);
-        context.addAttribute("action","товар добавлен в корзину");
+        context.addAttribute(ADD_ATTRIBUTE,true);
         return CONTEXT;
     }
 }

@@ -25,12 +25,14 @@
 <div class="container" >
 
 
-                <c:if test="${error_edit != null}">
-                <h5><p><font color = "red"> <c:out value="${error_edit}" /></ font><p></h5></c:if>
+                <c:if test="${error_edit}">
+                <h5><p><font color = "red"> <fmt:message bundle="${loc}" key="language.invalidData"/></ font><p></h5>
+                </c:if>
 
 
-             <c:if test="${edit_profile != null}">
-             <h5><p><font color = "red"> <c:out value="${edit_profile}" /></ font><p></h5></c:if>
+             <c:if test="${edit_profile}">
+             <h5><p><font color = "red"> <fmt:message bundle="${loc}" key="language.updatedProfile"/></ font><p></h5>
+             </c:if>
 
 <h3> <p><font color = "#3594B4"><fmt:message bundle="${loc}" key="language.editProf"/></ font> </p></h3>
 <form name="editProfile" method="POST" action="shop">

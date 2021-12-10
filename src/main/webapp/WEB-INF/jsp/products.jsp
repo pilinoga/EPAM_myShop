@@ -29,8 +29,9 @@
   <fmt:setBundle basename="language" var="loc"/>
 <div align="left" class= "bg-light">
 
-             <c:if test="${action != null}" >
-            <h7> <p align="center"> <font color = "red">    <c:out value="${action }"/> </ font> </c:if></p></h7>
+             <c:if test="${action}" >
+            <h7> <p align="center"> <font color = "red">    <fmt:message bundle="${loc}" key="language.addToCart"/> </ font> </p></h7>
+            </c:if>
             <h2> <p> <font color = "#3594B4"> <fmt:message bundle="${loc}" key="language.products"/> </ font> </p></h2>
         <table border="0" cellpadding="5">
 
@@ -46,7 +47,7 @@
             <c:forEach var="product" items="${products}">
                 <tr>
 
-                   <td width="50"> <img src="https://content2.onliner.by/catalog/device/main/b9fefc8c8f96dbc21492792f3a1a502d.jpeg" width="65" height="75" <td>
+                   <td width="50"> <img src="images/product.jpeg" width="65" height="75" <td>
                     <td><c:out value="${product.name}" /></td>
                     <td><c:out value="${product.description}"/></td>
                     <td><c:out value="${product.price}" /></td>

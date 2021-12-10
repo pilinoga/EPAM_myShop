@@ -51,9 +51,9 @@ public class EditProfileCommand implements Command{
                 service.create(customerNew);
             }
             session.setAttribute(CUSTOMER_ATTRIBUTE,customerNew);
-            context.addAttribute(EDIT_ATTRIBUTE, Message.UPDATED_PROFILE);
+            context.addAttribute(EDIT_ATTRIBUTE, true);
         }else{
-            context.addAttribute(ERROR_ATTRIBUTE, Message.INVALID_DATA);
+            context.addAttribute(ERROR_ATTRIBUTE, true);
         }
         return CONTEXT;
     }

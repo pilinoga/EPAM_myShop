@@ -23,7 +23,7 @@ public class Controller extends HttpServlet {
     private static final Logger logger = LogManager.getLogger(Controller.class);
     private static final String COMMAND_PARAM = "command";
     private static final String ROLE = "role";
-    private static final String ACCESS_DENIED_PAGE = "WEB-INF/jsp/error.jsp";
+    private static final String ACCESS_DENIED_PAGE = "WEB-INF/jsp/access.jsp";
 
     @Override
     public void init() throws ServletException {
